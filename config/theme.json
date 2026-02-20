@@ -1,0 +1,26 @@
+{
+  "colors": {
+    "background": [30, 30, 30, 255],
+    "foreground": [255, 255, 255, 255],
+    "button": [70, 130, 180, 255],
+    "buttonHover": [100, 149, 237, 255],
+    "buttonActive": [50, 110, 160, 255],
+    "text": [255, 255, 255, 255],
+    "border": [128, 128, 128, 255],
+    "panel": [50, 50, 50, 255]
+  },
+  "fonts": {
+    "default": {
+      "path": "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+      "size": 16
+    },
+    "title": {
+      "path": "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+      "size": 24
+    },
+    "button": {
+      "path": "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+      "size": 18
+    }
+  }
+}
