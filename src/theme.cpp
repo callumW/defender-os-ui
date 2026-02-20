@@ -105,6 +105,13 @@ bool Theme::loadFromFile(const std::string& filename) {
                     continue;
                 }
                 
+                // Validate color component ranges
+                if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255 || a < 0 || a > 255) {
+                    Logger::getInstance().warning("Color values out of range (0-255) for: " + colorName + ", skipping");
+                    colorPos = arrayEnd + 1;
+                    continue;
+                }
+                
                 setColor(colorName, Color(static_cast<uint8_t>(r), 
                                          static_cast<uint8_t>(g), 
                                          static_cast<uint8_t>(b), 
@@ -205,13 +212,37 @@ bool Theme::loadFromFile(const std::string& filename) {
 }
 
 // Helper function to find matching closing brace
+// Note: This assumes braces inside JSON strings have been handled or that
+// the JSON is well-formed without braces in string values
 size_t Theme::findMatchingBrace(const std::string& str, size_t start) const {
+    if (start >= str.length() || str[start] != '{') {
+        return std::string::npos;
+    }
+    
     int depth = 1;
+    bool inString = false;
+    
     for (size_t i = start + 1; i < str.length(); ++i) {
-        if (str[i] == '{') depth++;
-        else if (str[i] == '}') {
-            depth--;
-            if (depth == 0) return i;
+        // Handle escape sequences
+        if (str[i] == '\\' && i + 1 < str.length()) {
+            ++i; // Skip next character
+            continue;
+        }
+        
+        // Track whether we're inside a string
+        if (str[i] == '"') {
+            inString = !inString;
+            continue;
+        }
+        
+        // Only count braces outside of strings
+        if (!inString) {
+            if (str[i] == '{') {
+                depth++;
+            } else if (str[i] == '}') {
+                depth--;
+                if (depth == 0) return i;
+            }
         }
     }
     return std::string::npos;

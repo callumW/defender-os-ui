@@ -69,13 +69,11 @@ void testLoadFromFile() {
     
     // If file doesn't exist, that's okay for the test
     if (loaded) {
-        // Verify that at least one color was loaded from the file
+        // Verify that colors were loaded (alpha should be 255 for opaque colors)
         Color background = theme.getColor("background");
-        // The default background is (30, 30, 30, 255) which should match theme.json
-        // We just verify the color exists and is valid
         assert(background.a == 255);
         
-        // Verify that at least one font was configured
+        // Verify that fonts were configured
         std::string defaultFont = theme.getFontPath("default");
         assert(!defaultFont.empty());
         
