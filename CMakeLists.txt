@@ -1,0 +1,40 @@
+cmake_minimum_required(VERSION 3.15)
+project(DefenderOS_UI VERSION 1.0.0 LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
+# Export compile commands for IDE support
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+# Options
+option(BUILD_TESTS "Build tests" ON)
+option(BUILD_EXAMPLES "Build example applications" ON)
+
+# Find required packages
+find_package(SDL2 REQUIRED)
+find_package(SDL2_ttf REQUIRED)
+
+# Include directories
+include_directories(${SDL2_INCLUDE_DIRS})
+include_directories(${CMAKE_SOURCE_DIR}/include)
+
+# Compiler warnings
+if(MSVC)
+    add_compile_options(/W4)
+else()
+    add_compile_options(-Wall -Wextra -Wpedantic)
+endif()
+
+# Add subdirectories
+add_subdirectory(src)
+
+if(BUILD_EXAMPLES)
+    add_subdirectory(examples)
+endif()
+
+if(BUILD_TESTS)
+    enable_testing()
+    add_subdirectory(tests)
+endif()
