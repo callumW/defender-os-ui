@@ -1,5 +1,6 @@
 #include "defender/ui_element.h"
 #include "defender/logger.h"
+#include <algorithm>
 
 namespace defender {
 
