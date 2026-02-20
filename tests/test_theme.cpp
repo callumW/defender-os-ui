@@ -69,7 +69,20 @@ void testLoadFromFile() {
     
     // If file doesn't exist, that's okay for the test
     if (loaded) {
-        std::cout << "✓ Load from file test passed (file loaded)" << std::endl;
+        // Verify that at least one color was loaded from the file
+        Color background = theme.getColor("background");
+        // The default background is (30, 30, 30, 255) which should match theme.json
+        // We just verify the color exists and is valid
+        assert(background.a == 255);
+        
+        // Verify that at least one font was configured
+        std::string defaultFont = theme.getFontPath("default");
+        assert(!defaultFont.empty());
+        
+        int defaultSize = theme.getFontSize("default");
+        assert(defaultSize > 0);
+        
+        std::cout << "✓ Load from file test passed (file loaded and validated)" << std::endl;
     } else {
         std::cout << "✓ Load from file test passed (file not found, gracefully handled)" << std::endl;
     }

@@ -60,17 +60,37 @@ bool Theme::loadFromFile(const std::string& filename) {
         pos = content.find("\"colors\"");
         if (pos != std::string::npos) {
             size_t colorsStart = content.find("{", pos);
-            size_t colorsEnd = content.find("}", colorsStart);
+            if (colorsStart == std::string::npos) {
+                throw std::runtime_error("Missing opening brace for colors section");
+            }
+            
+            size_t colorsEnd = findMatchingBrace(content, colorsStart);
+            if (colorsEnd == std::string::npos) {
+                throw std::runtime_error("Missing closing brace for colors section");
+            }
+            
             std::string colorsSection = content.substr(colorsStart + 1, colorsEnd - colorsStart - 1);
             
             size_t colorPos = 0;
             while ((colorPos = colorsSection.find("\"", colorPos)) != std::string::npos) {
                 size_t nameStart = colorPos + 1;
                 size_t nameEnd = colorsSection.find("\"", nameStart);
+                if (nameEnd == std::string::npos) {
+                    Logger::getInstance().warning("Unclosed quote in color name, skipping");
+                    break;
+                }
+                
                 std::string colorName = colorsSection.substr(nameStart, nameEnd - nameStart);
                 
                 size_t arrayStart = colorsSection.find("[", nameEnd);
                 size_t arrayEnd = colorsSection.find("]", arrayStart);
+                
+                if (arrayStart == std::string::npos || arrayEnd == std::string::npos) {
+                    Logger::getInstance().warning("Missing brackets for color: " + colorName + ", skipping");
+                    colorPos = nameEnd + 1;
+                    continue;
+                }
+                
                 std::string arrayStr = colorsSection.substr(arrayStart + 1, arrayEnd - arrayStart - 1);
                 
                 // Parse color values
@@ -78,6 +98,12 @@ bool Theme::loadFromFile(const std::string& filename) {
                 int r, g, b, a;
                 char comma;
                 iss >> r >> comma >> g >> comma >> b >> comma >> a;
+                
+                if (iss.fail()) {
+                    Logger::getInstance().warning("Failed to parse color values for: " + colorName + ", skipping");
+                    colorPos = arrayEnd + 1;
+                    continue;
+                }
                 
                 setColor(colorName, Color(static_cast<uint8_t>(r), 
                                          static_cast<uint8_t>(g), 
@@ -93,13 +119,28 @@ bool Theme::loadFromFile(const std::string& filename) {
         pos = content.find("\"fonts\"");
         if (pos != std::string::npos) {
             size_t fontsStart = content.find("{", pos);
+            if (fontsStart == std::string::npos) {
+                Logger::getInstance().warning("Missing opening brace for fonts section");
+                return true; // Colors might have loaded, so return true
+            }
+            
             size_t fontsEnd = findMatchingBrace(content, fontsStart);
+            if (fontsEnd == std::string::npos) {
+                Logger::getInstance().warning("Missing closing brace for fonts section");
+                return true;
+            }
+            
             std::string fontsSection = content.substr(fontsStart + 1, fontsEnd - fontsStart - 1);
             
             size_t fontPos = 0;
             while ((fontPos = fontsSection.find("\"", fontPos)) != std::string::npos) {
                 size_t nameStart = fontPos + 1;
                 size_t nameEnd = fontsSection.find("\"", nameStart);
+                if (nameEnd == std::string::npos) {
+                    Logger::getInstance().warning("Unclosed quote in font name");
+                    break;
+                }
+                
                 std::string fontName = fontsSection.substr(nameStart, nameEnd - nameStart);
                 
                 // Skip if this is a property key (path or size)
@@ -109,7 +150,14 @@ bool Theme::loadFromFile(const std::string& filename) {
                 }
                 
                 size_t fontObjStart = fontsSection.find("{", nameEnd);
-                size_t fontObjEnd = fontsSection.find("}", fontObjStart);
+                size_t fontObjEnd = findMatchingBrace(fontsSection, fontObjStart);
+                
+                if (fontObjStart == std::string::npos || fontObjEnd == std::string::npos) {
+                    Logger::getInstance().warning("Missing braces for font: " + fontName + ", skipping");
+                    fontPos = nameEnd + 1;
+                    continue;
+                }
+                
                 std::string fontObj = fontsSection.substr(fontObjStart, fontObjEnd - fontObjStart + 1);
                 
                 // Parse path
@@ -118,8 +166,11 @@ bool Theme::loadFromFile(const std::string& filename) {
                     size_t pathStart = fontObj.find("\"", pathPos + 6);
                     pathStart = fontObj.find("\"", pathStart + 1);
                     size_t pathEnd = fontObj.find("\"", pathStart + 1);
-                    std::string path = fontObj.substr(pathStart + 1, pathEnd - pathStart - 1);
-                    setFontPath(fontName, path);
+                    
+                    if (pathStart != std::string::npos && pathEnd != std::string::npos) {
+                        std::string path = fontObj.substr(pathStart + 1, pathEnd - pathStart - 1);
+                        setFontPath(fontName, path);
+                    }
                 }
                 
                 // Parse size
@@ -127,9 +178,16 @@ bool Theme::loadFromFile(const std::string& filename) {
                 if (sizePos != std::string::npos) {
                     size_t sizeStart = fontObj.find(":", sizePos);
                     size_t sizeEnd = fontObj.find_first_of(",}", sizeStart);
-                    std::string sizeStr = fontObj.substr(sizeStart + 1, sizeEnd - sizeStart - 1);
-                    int size = std::stoi(trim(sizeStr));
-                    setFontSize(fontName, size);
+                    
+                    if (sizeStart != std::string::npos && sizeEnd != std::string::npos) {
+                        std::string sizeStr = fontObj.substr(sizeStart + 1, sizeEnd - sizeStart - 1);
+                        try {
+                            int size = std::stoi(trim(sizeStr));
+                            setFontSize(fontName, size);
+                        } catch (const std::exception& e) {
+                            Logger::getInstance().warning("Failed to parse font size for: " + fontName);
+                        }
+                    }
                 }
                 
                 Logger::getInstance().debug("Loaded font: " + fontName);
