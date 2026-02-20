@@ -3,6 +3,7 @@
 #include "defender/panel.h"
 #include "defender/logger.h"
 #include "defender/sdl_renderer.h"
+#include "defender/theme.h"
 #include <iostream>
 #include <chrono>
 
@@ -13,6 +14,9 @@ int main() {
         // Set log level
         Logger::getInstance().setLogLevel(LogLevel::INFO);
         Logger::getInstance().info("Starting Simple Example");
+
+        // Load custom theme (optional - uses defaults if file not found)
+        Theme::getInstance().loadFromFile("../config/theme.json");
 
         // Initialize SDL
         SDLContext sdlContext;

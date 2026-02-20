@@ -3,6 +3,7 @@
 #include "defender/panel.h"
 #include "defender/logger.h"
 #include "defender/sdl_renderer.h"
+#include "defender/theme.h"
 #include <iostream>
 #include <chrono>
 #include <memory>
@@ -171,6 +172,9 @@ int main() {
     try {
         Logger::getInstance().setLogLevel(LogLevel::INFO);
         Logger::getInstance().info("Starting Menu Example");
+
+        // Load custom theme (optional)
+        Theme::getInstance().loadFromFile("../config/theme.json");
 
         SDLContext sdlContext;
         if (!sdlContext.isInitialized()) {
