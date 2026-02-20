@@ -171,12 +171,15 @@ bool Theme::loadFromFile(const std::string& filename) {
                 size_t pathPos = fontObj.find("\"path\"");
                 if (pathPos != std::string::npos) {
                     size_t pathStart = fontObj.find("\"", pathPos + 6);
-                    pathStart = fontObj.find("\"", pathStart + 1);
-                    size_t pathEnd = fontObj.find("\"", pathStart + 1);
-                    
-                    if (pathStart != std::string::npos && pathEnd != std::string::npos) {
-                        std::string path = fontObj.substr(pathStart + 1, pathEnd - pathStart - 1);
-                        setFontPath(fontName, path);
+                    if (pathStart != std::string::npos) {
+                        pathStart = fontObj.find("\"", pathStart + 1);
+                        if (pathStart != std::string::npos) {
+                            size_t pathEnd = fontObj.find("\"", pathStart + 1);
+                            if (pathEnd != std::string::npos) {
+                                std::string path = fontObj.substr(pathStart + 1, pathEnd - pathStart - 1);
+                                setFontPath(fontName, path);
+                            }
+                        }
                     }
                 }
                 
@@ -184,15 +187,19 @@ bool Theme::loadFromFile(const std::string& filename) {
                 size_t sizePos = fontObj.find("\"size\"");
                 if (sizePos != std::string::npos) {
                     size_t sizeStart = fontObj.find(":", sizePos);
-                    size_t sizeEnd = fontObj.find_first_of(",}", sizeStart);
-                    
-                    if (sizeStart != std::string::npos && sizeEnd != std::string::npos) {
-                        std::string sizeStr = fontObj.substr(sizeStart + 1, sizeEnd - sizeStart - 1);
-                        try {
-                            int size = std::stoi(trim(sizeStr));
-                            setFontSize(fontName, size);
-                        } catch (const std::exception& e) {
-                            Logger::getInstance().warning("Failed to parse font size for: " + fontName);
+                    if (sizeStart != std::string::npos) {
+                        size_t sizeEnd = fontObj.find_first_of(",}", sizeStart);
+                        if (sizeEnd != std::string::npos) {
+                            std::string sizeStr = fontObj.substr(sizeStart + 1, sizeEnd - sizeStart - 1);
+                            try {
+                                int size = std::stoi(trim(sizeStr));
+                                setFontSize(fontName, size);
+                            } catch (const std::exception& e) {
+                                Logger::getInstance().warning("Failed to parse font size for: " + fontName);
+                            }
+                        }
+                    }
+                }
                         }
                     }
                 }
@@ -251,8 +258,11 @@ size_t Theme::findMatchingBrace(const std::string& str, size_t start) const {
 // Helper function to trim whitespace
 std::string Theme::trim(const std::string& str) const {
     size_t start = str.find_first_not_of(" \t\n\r");
-    size_t end = str.find_last_not_of(" \t\n\r");
     if (start == std::string::npos) return "";
+    
+    size_t end = str.find_last_not_of(" \t\n\r");
+    if (end == std::string::npos) return "";
+    
     return str.substr(start, end - start + 1);
 }
 
