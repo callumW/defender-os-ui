@@ -1,6 +1,9 @@
 #include "defender/theme.h"
 #include "defender/logger.h"
 #include <fstream>
+#include <sstream>
+#include <algorithm>
+#include <cctype>
 
 namespace defender {
 
@@ -37,11 +40,131 @@ void Theme::setDefaults() {
 bool Theme::loadFromFile(const std::string& filename) {
     Logger::getInstance().info("Loading theme from file: " + filename);
     
-    // TODO: Implement JSON parsing when nlohmann/json is available
-    // For now, just use defaults
-    Logger::getInstance().warning("JSON parsing not yet implemented, using default theme");
-    
-    return true;
+    std::ifstream file(filename);
+    if (!file.is_open()) {
+        Logger::getInstance().error("Failed to open theme file: " + filename);
+        return false;
+    }
+
+    // Read entire file into string
+    std::stringstream buffer;
+    buffer << file.rdbuf();
+    std::string content = buffer.str();
+    file.close();
+
+    // Simple JSON parser for theme configuration
+    try {
+        size_t pos = 0;
+        
+        // Parse colors section
+        pos = content.find("\"colors\"");
+        if (pos != std::string::npos) {
+            size_t colorsStart = content.find("{", pos);
+            size_t colorsEnd = content.find("}", colorsStart);
+            std::string colorsSection = content.substr(colorsStart + 1, colorsEnd - colorsStart - 1);
+            
+            size_t colorPos = 0;
+            while ((colorPos = colorsSection.find("\"", colorPos)) != std::string::npos) {
+                size_t nameStart = colorPos + 1;
+                size_t nameEnd = colorsSection.find("\"", nameStart);
+                std::string colorName = colorsSection.substr(nameStart, nameEnd - nameStart);
+                
+                size_t arrayStart = colorsSection.find("[", nameEnd);
+                size_t arrayEnd = colorsSection.find("]", arrayStart);
+                std::string arrayStr = colorsSection.substr(arrayStart + 1, arrayEnd - arrayStart - 1);
+                
+                // Parse color values
+                std::istringstream iss(arrayStr);
+                int r, g, b, a;
+                char comma;
+                iss >> r >> comma >> g >> comma >> b >> comma >> a;
+                
+                setColor(colorName, Color(static_cast<uint8_t>(r), 
+                                         static_cast<uint8_t>(g), 
+                                         static_cast<uint8_t>(b), 
+                                         static_cast<uint8_t>(a)));
+                
+                Logger::getInstance().debug("Loaded color: " + colorName);
+                colorPos = arrayEnd + 1;
+            }
+        }
+        
+        // Parse fonts section
+        pos = content.find("\"fonts\"");
+        if (pos != std::string::npos) {
+            size_t fontsStart = content.find("{", pos);
+            size_t fontsEnd = findMatchingBrace(content, fontsStart);
+            std::string fontsSection = content.substr(fontsStart + 1, fontsEnd - fontsStart - 1);
+            
+            size_t fontPos = 0;
+            while ((fontPos = fontsSection.find("\"", fontPos)) != std::string::npos) {
+                size_t nameStart = fontPos + 1;
+                size_t nameEnd = fontsSection.find("\"", nameStart);
+                std::string fontName = fontsSection.substr(nameStart, nameEnd - nameStart);
+                
+                // Skip if this is a property key (path or size)
+                if (fontName == "path" || fontName == "size") {
+                    fontPos = nameEnd + 1;
+                    continue;
+                }
+                
+                size_t fontObjStart = fontsSection.find("{", nameEnd);
+                size_t fontObjEnd = fontsSection.find("}", fontObjStart);
+                std::string fontObj = fontsSection.substr(fontObjStart, fontObjEnd - fontObjStart + 1);
+                
+                // Parse path
+                size_t pathPos = fontObj.find("\"path\"");
+                if (pathPos != std::string::npos) {
+                    size_t pathStart = fontObj.find("\"", pathPos + 6);
+                    pathStart = fontObj.find("\"", pathStart + 1);
+                    size_t pathEnd = fontObj.find("\"", pathStart + 1);
+                    std::string path = fontObj.substr(pathStart + 1, pathEnd - pathStart - 1);
+                    setFontPath(fontName, path);
+                }
+                
+                // Parse size
+                size_t sizePos = fontObj.find("\"size\"");
+                if (sizePos != std::string::npos) {
+                    size_t sizeStart = fontObj.find(":", sizePos);
+                    size_t sizeEnd = fontObj.find_first_of(",}", sizeStart);
+                    std::string sizeStr = fontObj.substr(sizeStart + 1, sizeEnd - sizeStart - 1);
+                    int size = std::stoi(trim(sizeStr));
+                    setFontSize(fontName, size);
+                }
+                
+                Logger::getInstance().debug("Loaded font: " + fontName);
+                fontPos = fontObjEnd + 1;
+            }
+        }
+        
+        Logger::getInstance().info("Successfully loaded theme from: " + filename);
+        return true;
+        
+    } catch (const std::exception& e) {
+        Logger::getInstance().error("Failed to parse theme file: " + std::string(e.what()));
+        return false;
+    }
+}
+
+// Helper function to find matching closing brace
+size_t Theme::findMatchingBrace(const std::string& str, size_t start) const {
+    int depth = 1;
+    for (size_t i = start + 1; i < str.length(); ++i) {
+        if (str[i] == '{') depth++;
+        else if (str[i] == '}') {
+            depth--;
+            if (depth == 0) return i;
+        }
+    }
+    return std::string::npos;
+}
+
+// Helper function to trim whitespace
+std::string Theme::trim(const std::string& str) const {
+    size_t start = str.find_first_not_of(" \t\n\r");
+    size_t end = str.find_last_not_of(" \t\n\r");
+    if (start == std::string::npos) return "";
+    return str.substr(start, end - start + 1);
 }
 
 Color Theme::getColor(const std::string& name) const {

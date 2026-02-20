@@ -10,7 +10,6 @@
 
 ### Optional
 - **CTest**: Unit testing framework (included with CMake)
-- **nlohmann/json** (>= 3.0.0): JSON parsing for configuration files
 
 ## Runtime Dependencies
 

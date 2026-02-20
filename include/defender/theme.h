@@ -92,6 +92,10 @@ public:
 
 private:
     void setDefaults();
+    
+    // Helper functions for JSON parsing
+    size_t findMatchingBrace(const std::string& str, size_t start) const;
+    std::string trim(const std::string& str) const;
 
     std::map<std::string, Color> colors_;
     std::map<std::string, std::string> fontPaths_;

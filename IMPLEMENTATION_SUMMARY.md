@@ -234,7 +234,6 @@ Run with: `ctest --output-on-failure`
 
 These were not required but could be added:
 
-- JSON parsing implementation (structure defined, needs nlohmann/json)
 - Additional UI components (TextBox, Slider, etc.)
 - Layout managers
 - Animations

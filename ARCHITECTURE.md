@@ -395,5 +395,4 @@ Potential additions while maintaining current architecture:
 3. **Animations**: Smooth transitions between states
 4. **Touch Input**: Extend InputState for touch events
 5. **Styling**: CSS-like styling system
-6. **JSON Loading**: Full theme loading from JSON
-7. **Resource Manager**: Centralized texture/font management
+6. **Resource Manager**: Centralized texture/font management

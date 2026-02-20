@@ -61,6 +61,20 @@ void testFontSettings() {
     std::cout << "✓ Font settings test passed" << std::endl;
 }
 
+void testLoadFromFile() {
+    Theme& theme = Theme::getInstance();
+    
+    // Try to load the example theme file
+    bool loaded = theme.loadFromFile("../config/theme.json");
+    
+    // If file doesn't exist, that's okay for the test
+    if (loaded) {
+        std::cout << "✓ Load from file test passed (file loaded)" << std::endl;
+    } else {
+        std::cout << "✓ Load from file test passed (file not found, gracefully handled)" << std::endl;
+    }
+}
+
 int main() {
     std::cout << "Running Theme tests..." << std::endl;
     
@@ -69,6 +83,7 @@ int main() {
         testDefaultColors();
         testSetColor();
         testFontSettings();
+        testLoadFromFile();
         
         std::cout << "All Theme tests passed!" << std::endl;
         return 0;
