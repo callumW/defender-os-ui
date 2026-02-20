@@ -19,6 +19,7 @@ if(TARGET SDL2::SDL2)
         PUBLIC
             SDL2::SDL2
             SDL2_ttf::SDL2_ttf
+            nlohmann_json::nlohmann_json
     )
 else()
     # Fallback for pkg-config based SDL2
@@ -26,6 +27,7 @@ else()
         PUBLIC
             ${SDL2_LIBRARIES}
             ${SDL2_TTF_LIBRARIES}
+            nlohmann_json::nlohmann_json
     )
     target_include_directories(defender_ui
         PUBLIC

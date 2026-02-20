@@ -7,6 +7,7 @@
 - **C++ Compiler**: Supporting C++17 standard (GCC 7+, Clang 5+, MSVC 2017+)
 - **SDL2** (>= 2.0.0): Simple DirectMedia Layer for graphics and input
 - **SDL2_ttf** (>= 2.0.0): TrueType font rendering support for SDL2
+- **nlohmann/json** (>= 3.11.0): JSON parsing library (header-only, automatically downloaded if not found)
 
 ### Optional
 - **CTest**: Unit testing framework (included with CMake)
@@ -22,12 +23,12 @@
 ### Ubuntu/Debian
 ```bash
 sudo apt-get update
-sudo apt-get install -y cmake g++ libsdl2-dev libsdl2-ttf-dev
+sudo apt-get install -y cmake g++ libsdl2-dev libsdl2-ttf-dev nlohmann-json3-dev
 ```
 
 ### Fedora/RHEL
 ```bash
-sudo dnf install cmake gcc-c++ SDL2-devel SDL2_ttf-devel
+sudo dnf install cmake gcc-c++ SDL2-devel SDL2_ttf-devel json-devel
 ```
 
 ### Buildroot

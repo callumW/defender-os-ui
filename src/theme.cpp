@@ -1,9 +1,9 @@
 #include "defender/theme.h"
 #include "defender/logger.h"
+#include <nlohmann/json.hpp>
 #include <fstream>
-#include <sstream>
-#include <algorithm>
-#include <cctype>
+
+using json = nlohmann::json;
 
 namespace defender {
 
@@ -46,224 +46,93 @@ bool Theme::loadFromFile(const std::string& filename) {
         return false;
     }
 
-    // Read entire file into string
-    std::stringstream buffer;
-    buffer << file.rdbuf();
-    std::string content = buffer.str();
-    file.close();
-
-    // Simple JSON parser for theme configuration
     try {
-        size_t pos = 0;
+        // Parse JSON file using nlohmann/json
+        json j;
+        file >> j;
+        file.close();
         
         // Parse colors section
-        pos = content.find("\"colors\"");
-        if (pos != std::string::npos) {
-            size_t colorsStart = content.find("{", pos);
-            if (colorsStart == std::string::npos) {
-                throw std::runtime_error("Missing opening brace for colors section");
-            }
-            
-            size_t colorsEnd = findMatchingBrace(content, colorsStart);
-            if (colorsEnd == std::string::npos) {
-                throw std::runtime_error("Missing closing brace for colors section");
-            }
-            
-            std::string colorsSection = content.substr(colorsStart + 1, colorsEnd - colorsStart - 1);
-            
-            size_t colorPos = 0;
-            while ((colorPos = colorsSection.find("\"", colorPos)) != std::string::npos) {
-                size_t nameStart = colorPos + 1;
-                size_t nameEnd = colorsSection.find("\"", nameStart);
-                if (nameEnd == std::string::npos) {
-                    Logger::getInstance().warning("Unclosed quote in color name, skipping");
-                    break;
+        if (j.contains("colors") && j["colors"].is_object()) {
+            for (auto& [colorName, colorArray] : j["colors"].items()) {
+                if (colorArray.is_array() && colorArray.size() >= 4) {
+                    try {
+                        int r = colorArray[0].get<int>();
+                        int g = colorArray[1].get<int>();
+                        int b = colorArray[2].get<int>();
+                        int a = colorArray[3].get<int>();
+                        
+                        // Validate color component ranges
+                        if (r < 0 || r > 255 || g < 0 || g > 255 || 
+                            b < 0 || b > 255 || a < 0 || a > 255) {
+                            Logger::getInstance().warning(
+                                "Color values out of range (0-255) for: " + colorName + ", skipping"
+                            );
+                            continue;
+                        }
+                        
+                        setColor(colorName, Color(
+                            static_cast<uint8_t>(r),
+                            static_cast<uint8_t>(g),
+                            static_cast<uint8_t>(b),
+                            static_cast<uint8_t>(a)
+                        ));
+                        
+                        Logger::getInstance().debug("Loaded color: " + colorName);
+                    } catch (const json::exception& e) {
+                        Logger::getInstance().warning(
+                            "Failed to parse color: " + colorName + " - " + e.what()
+                        );
+                    }
+                } else {
+                    Logger::getInstance().warning(
+                        "Invalid color format for: " + colorName + ", expected array of 4 integers"
+                    );
                 }
-                
-                std::string colorName = colorsSection.substr(nameStart, nameEnd - nameStart);
-                
-                size_t arrayStart = colorsSection.find("[", nameEnd);
-                size_t arrayEnd = colorsSection.find("]", arrayStart);
-                
-                if (arrayStart == std::string::npos || arrayEnd == std::string::npos) {
-                    Logger::getInstance().warning("Missing brackets for color: " + colorName + ", skipping");
-                    colorPos = nameEnd + 1;
-                    continue;
-                }
-                
-                std::string arrayStr = colorsSection.substr(arrayStart + 1, arrayEnd - arrayStart - 1);
-                
-                // Parse color values
-                std::istringstream iss(arrayStr);
-                int r, g, b, a;
-                char comma;
-                iss >> r >> comma >> g >> comma >> b >> comma >> a;
-                
-                if (iss.fail()) {
-                    Logger::getInstance().warning("Failed to parse color values for: " + colorName + ", skipping");
-                    colorPos = arrayEnd + 1;
-                    continue;
-                }
-                
-                // Validate color component ranges
-                if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255 || a < 0 || a > 255) {
-                    Logger::getInstance().warning("Color values out of range (0-255) for: " + colorName + ", skipping");
-                    colorPos = arrayEnd + 1;
-                    continue;
-                }
-                
-                setColor(colorName, Color(static_cast<uint8_t>(r), 
-                                         static_cast<uint8_t>(g), 
-                                         static_cast<uint8_t>(b), 
-                                         static_cast<uint8_t>(a)));
-                
-                Logger::getInstance().debug("Loaded color: " + colorName);
-                colorPos = arrayEnd + 1;
             }
         }
         
         // Parse fonts section
-        pos = content.find("\"fonts\"");
-        if (pos != std::string::npos) {
-            size_t fontsStart = content.find("{", pos);
-            if (fontsStart == std::string::npos) {
-                Logger::getInstance().warning("Missing opening brace for fonts section");
-                return true; // Colors might have loaded, so return true
-            }
-            
-            size_t fontsEnd = findMatchingBrace(content, fontsStart);
-            if (fontsEnd == std::string::npos) {
-                Logger::getInstance().warning("Missing closing brace for fonts section");
-                return true;
-            }
-            
-            std::string fontsSection = content.substr(fontsStart + 1, fontsEnd - fontsStart - 1);
-            
-            size_t fontPos = 0;
-            while ((fontPos = fontsSection.find("\"", fontPos)) != std::string::npos) {
-                size_t nameStart = fontPos + 1;
-                size_t nameEnd = fontsSection.find("\"", nameStart);
-                if (nameEnd == std::string::npos) {
-                    Logger::getInstance().warning("Unclosed quote in font name");
-                    break;
-                }
-                
-                std::string fontName = fontsSection.substr(nameStart, nameEnd - nameStart);
-                
-                // Skip if this is a property key (path or size)
-                if (fontName == "path" || fontName == "size") {
-                    fontPos = nameEnd + 1;
-                    continue;
-                }
-                
-                size_t fontObjStart = fontsSection.find("{", nameEnd);
-                size_t fontObjEnd = findMatchingBrace(fontsSection, fontObjStart);
-                
-                if (fontObjStart == std::string::npos || fontObjEnd == std::string::npos) {
-                    Logger::getInstance().warning("Missing braces for font: " + fontName + ", skipping");
-                    fontPos = nameEnd + 1;
-                    continue;
-                }
-                
-                std::string fontObj = fontsSection.substr(fontObjStart, fontObjEnd - fontObjStart + 1);
-                
-                // Parse path
-                size_t pathPos = fontObj.find("\"path\"");
-                if (pathPos != std::string::npos) {
-                    size_t pathStart = fontObj.find("\"", pathPos + 6);
-                    if (pathStart != std::string::npos) {
-                        pathStart = fontObj.find("\"", pathStart + 1);
-                        if (pathStart != std::string::npos) {
-                            size_t pathEnd = fontObj.find("\"", pathStart + 1);
-                            if (pathEnd != std::string::npos) {
-                                std::string path = fontObj.substr(pathStart + 1, pathEnd - pathStart - 1);
-                                setFontPath(fontName, path);
-                            }
+        if (j.contains("fonts") && j["fonts"].is_object()) {
+            for (auto& [fontName, fontObj] : j["fonts"].items()) {
+                if (fontObj.is_object()) {
+                    try {
+                        // Parse font path
+                        if (fontObj.contains("path") && fontObj["path"].is_string()) {
+                            std::string path = fontObj["path"].get<std::string>();
+                            setFontPath(fontName, path);
                         }
-                    }
-                }
-                
-                // Parse size
-                size_t sizePos = fontObj.find("\"size\"");
-                if (sizePos != std::string::npos) {
-                    size_t sizeStart = fontObj.find(":", sizePos);
-                    if (sizeStart != std::string::npos) {
-                        size_t sizeEnd = fontObj.find_first_of(",}", sizeStart);
-                        if (sizeEnd != std::string::npos) {
-                            std::string sizeStr = fontObj.substr(sizeStart + 1, sizeEnd - sizeStart - 1);
-                            try {
-                                int size = std::stoi(trim(sizeStr));
-                                setFontSize(fontName, size);
-                            } catch (const std::exception& e) {
-                                Logger::getInstance().warning("Failed to parse font size for: " + fontName);
-                            }
+                        
+                        // Parse font size
+                        if (fontObj.contains("size") && fontObj["size"].is_number_integer()) {
+                            int size = fontObj["size"].get<int>();
+                            setFontSize(fontName, size);
                         }
+                        
+                        Logger::getInstance().debug("Loaded font: " + fontName);
+                    } catch (const json::exception& e) {
+                        Logger::getInstance().warning(
+                            "Failed to parse font: " + fontName + " - " + e.what()
+                        );
                     }
+                } else {
+                    Logger::getInstance().warning(
+                        "Invalid font format for: " + fontName + ", expected object with path and size"
+                    );
                 }
-                        }
-                    }
-                }
-                
-                Logger::getInstance().debug("Loaded font: " + fontName);
-                fontPos = fontObjEnd + 1;
             }
         }
         
         Logger::getInstance().info("Successfully loaded theme from: " + filename);
         return true;
         
+    } catch (const json::exception& e) {
+        Logger::getInstance().error("Failed to parse JSON file: " + std::string(e.what()));
+        return false;
     } catch (const std::exception& e) {
-        Logger::getInstance().error("Failed to parse theme file: " + std::string(e.what()));
+        Logger::getInstance().error("Failed to load theme file: " + std::string(e.what()));
         return false;
     }
-}
-
-// Helper function to find matching closing brace
-// Note: This assumes braces inside JSON strings have been handled or that
-// the JSON is well-formed without braces in string values
-size_t Theme::findMatchingBrace(const std::string& str, size_t start) const {
-    if (start >= str.length() || str[start] != '{') {
-        return std::string::npos;
-    }
-    
-    int depth = 1;
-    bool inString = false;
-    
-    for (size_t i = start + 1; i < str.length(); ++i) {
-        // Handle escape sequences
-        if (str[i] == '\\' && i + 1 < str.length()) {
-            ++i; // Skip next character
-            continue;
-        }
-        
-        // Track whether we're inside a string
-        if (str[i] == '"') {
-            inString = !inString;
-            continue;
-        }
-        
-        // Only count braces outside of strings
-        if (!inString) {
-            if (str[i] == '{') {
-                depth++;
-            } else if (str[i] == '}') {
-                depth--;
-                if (depth == 0) return i;
-            }
-        }
-    }
-    return std::string::npos;
-}
-
-// Helper function to trim whitespace
-std::string Theme::trim(const std::string& str) const {
-    size_t start = str.find_first_not_of(" \t\n\r");
-    if (start == std::string::npos) return "";
-    
-    size_t end = str.find_last_not_of(" \t\n\r");
-    if (end == std::string::npos) return "";
-    
-    return str.substr(start, end - start + 1);
 }
 
 Color Theme::getColor(const std::string& name) const {

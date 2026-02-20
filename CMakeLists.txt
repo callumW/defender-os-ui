@@ -16,6 +16,9 @@ option(BUILD_EXAMPLES "Build example applications" ON)
 find_package(SDL2 QUIET)
 find_package(SDL2_ttf QUIET)
 
+# Try to find nlohmann/json
+find_package(nlohmann_json QUIET)
+
 # Check if SDL2 was found
 if(NOT SDL2_FOUND)
     message(WARNING "SDL2 not found. Please install SDL2 to build this project.")
@@ -41,6 +44,17 @@ endif()
 if(SDL2_TTF_INCLUDE_DIRS)
     include_directories(${SDL2_TTF_INCLUDE_DIRS})
 endif()
+
+# If nlohmann/json not found, try to use FetchContent to download it
+if(NOT nlohmann_json_FOUND)
+    include(FetchContent)
+    FetchContent_Declare(
+        nlohmann_json
+        URL https://github.com/nlohmann/json/releases/download/v3.11.3/json.tar.xz
+    )
+    FetchContent_MakeAvailable(nlohmann_json)
+endif()
+
 include_directories(${CMAKE_SOURCE_DIR}/include)
 
 # Compiler warnings
