@@ -13,11 +13,34 @@ option(BUILD_TESTS "Build tests" ON)
 option(BUILD_EXAMPLES "Build example applications" ON)
 
 # Find required packages
-find_package(SDL2 REQUIRED)
-find_package(SDL2_ttf REQUIRED)
+find_package(SDL2 QUIET)
+find_package(SDL2_ttf QUIET)
+
+# Check if SDL2 was found
+if(NOT SDL2_FOUND)
+    message(WARNING "SDL2 not found. Please install SDL2 to build this project.")
+    message(WARNING "Ubuntu/Debian: sudo apt-get install libsdl2-dev libsdl2-ttf-dev")
+    message(WARNING "Fedora/RHEL: sudo dnf install SDL2-devel SDL2_ttf-devel")
+    
+    # Try to find using pkg-config as fallback
+    find_package(PkgConfig QUIET)
+    if(PkgConfig_FOUND)
+        pkg_check_modules(SDL2 QUIET sdl2)
+        pkg_check_modules(SDL2_TTF QUIET SDL2_ttf)
+    endif()
+    
+    if(NOT SDL2_FOUND)
+        message(FATAL_ERROR "SDL2 is required but not found. Please install it.")
+    endif()
+endif()
 
 # Include directories
-include_directories(${SDL2_INCLUDE_DIRS})
+if(SDL2_INCLUDE_DIRS)
+    include_directories(${SDL2_INCLUDE_DIRS})
+endif()
+if(SDL2_TTF_INCLUDE_DIRS)
+    include_directories(${SDL2_TTF_INCLUDE_DIRS})
+endif()
 include_directories(${CMAKE_SOURCE_DIR}/include)
 
 # Compiler warnings

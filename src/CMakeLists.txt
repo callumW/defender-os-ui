@@ -14,11 +14,25 @@ set(DEFENDER_UI_SOURCES
 add_library(defender_ui STATIC ${DEFENDER_UI_SOURCES})
 
 # Link SDL2 libraries
-target_link_libraries(defender_ui
-    PUBLIC
-        SDL2::SDL2
-        SDL2_ttf::SDL2_ttf
-)
+if(TARGET SDL2::SDL2)
+    target_link_libraries(defender_ui
+        PUBLIC
+            SDL2::SDL2
+            SDL2_ttf::SDL2_ttf
+    )
+else()
+    # Fallback for pkg-config based SDL2
+    target_link_libraries(defender_ui
+        PUBLIC
+            ${SDL2_LIBRARIES}
+            ${SDL2_TTF_LIBRARIES}
+    )
+    target_include_directories(defender_ui
+        PUBLIC
+            ${SDL2_INCLUDE_DIRS}
+            ${SDL2_TTF_INCLUDE_DIRS}
+    )
+endif()
 
 # Include directories
 target_include_directories(defender_ui
