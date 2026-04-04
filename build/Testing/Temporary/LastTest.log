@@ -1,0 +1,848 @@
+Start testing: Apr 04 21:27 UTC
+----------------------------------------------------------
+1/29 Testing: LoggerTest.SingletonReturnsSameInstance
+1/29 Test: LoggerTest.SingletonReturnsSameInstance
+Command: "/home/runner/work/defender-os-ui/defender-os-ui/build/tests/test_logger" "--gtest_filter=LoggerTest.SingletonReturnsSameInstance" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/defender-os-ui/defender-os-ui/build/tests
+"LoggerTest.SingletonReturnsSameInstance" start time: Apr 04 21:27 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/defender-os-ui/defender-os-ui/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = LoggerTest.SingletonReturnsSameInstance
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from LoggerTest
+[ RUN      ] LoggerTest.SingletonReturnsSameInstance
+[       OK ] LoggerTest.SingletonReturnsSameInstance (0 ms)
+[----------] 1 test from LoggerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"LoggerTest.SingletonReturnsSameInstance" end time: Apr 04 21:27 UTC
+"LoggerTest.SingletonReturnsSameInstance" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/29 Testing: LoggerTest.LogLevelFiltersLowerSeverity
+2/29 Test: LoggerTest.LogLevelFiltersLowerSeverity
+Command: "/home/runner/work/defender-os-ui/defender-os-ui/build/tests/test_logger" "--gtest_filter=LoggerTest.LogLevelFiltersLowerSeverity" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/defender-os-ui/defender-os-ui/build/tests
+"LoggerTest.LogLevelFiltersLowerSeverity" start time: Apr 04 21:27 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/defender-os-ui/defender-os-ui/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = LoggerTest.LogLevelFiltersLowerSeverity
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from LoggerTest
+[ RUN      ] LoggerTest.LogLevelFiltersLowerSeverity
+[2026-04-04 21:27:26.544] [WARNING] [test] should pass
+[       OK ] LoggerTest.LogLevelFiltersLowerSeverity (0 ms)
+[----------] 1 test from LoggerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"LoggerTest.LogLevelFiltersLowerSeverity" end time: Apr 04 21:27 UTC
+"LoggerTest.LogLevelFiltersLowerSeverity" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/29 Testing: LoggerTest.AllLevelsLogWithoutCrash
+3/29 Test: LoggerTest.AllLevelsLogWithoutCrash
+Command: "/home/runner/work/defender-os-ui/defender-os-ui/build/tests/test_logger" "--gtest_filter=LoggerTest.AllLevelsLogWithoutCrash" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/defender-os-ui/defender-os-ui/build/tests
+"LoggerTest.AllLevelsLogWithoutCrash" start time: Apr 04 21:27 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/defender-os-ui/defender-os-ui/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = LoggerTest.AllLevelsLogWithoutCrash
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from LoggerTest
+[ RUN      ] LoggerTest.AllLevelsLogWithoutCrash
+[2026-04-04 21:27:26.546] [DEBUG] [test] d
+[2026-04-04 21:27:26.546] [INFO] [test] i
+[2026-04-04 21:27:26.546] [WARNING] [test] w
+[2026-04-04 21:27:26.546] [ERROR] [test] e
+[2026-04-04 21:27:26.546] [CRITICAL] [test] c
+[       OK ] LoggerTest.AllLevelsLogWithoutCrash (0 ms)
+[----------] 1 test from LoggerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"LoggerTest.AllLevelsLogWithoutCrash" end time: Apr 04 21:27 UTC
+"LoggerTest.AllLevelsLogWithoutCrash" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/29 Testing: LoggerTest.EmptyModuleDoesNotCrash
+4/29 Test: LoggerTest.EmptyModuleDoesNotCrash
+Command: "/home/runner/work/defender-os-ui/defender-os-ui/build/tests/test_logger" "--gtest_filter=LoggerTest.EmptyModuleDoesNotCrash" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/defender-os-ui/defender-os-ui/build/tests
+"LoggerTest.EmptyModuleDoesNotCrash" start time: Apr 04 21:27 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/defender-os-ui/defender-os-ui/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = LoggerTest.EmptyModuleDoesNotCrash
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from LoggerTest
+[ RUN      ] LoggerTest.EmptyModuleDoesNotCrash
+[2026-04-04 21:27:26.548] [INFO] no module
+[       OK ] LoggerTest.EmptyModuleDoesNotCrash (0 ms)
+[----------] 1 test from LoggerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"LoggerTest.EmptyModuleDoesNotCrash" end time: Apr 04 21:27 UTC
+"LoggerTest.EmptyModuleDoesNotCrash" time elapsed: 00:00:00
+----------------------------------------------------------
+
+5/29 Testing: LoggerTest.SetLogLevelChangesThreshold
+5/29 Test: LoggerTest.SetLogLevelChangesThreshold
+Command: "/home/runner/work/defender-os-ui/defender-os-ui/build/tests/test_logger" "--gtest_filter=LoggerTest.SetLogLevelChangesThreshold" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/defender-os-ui/defender-os-ui/build/tests
+"LoggerTest.SetLogLevelChangesThreshold" start time: Apr 04 21:27 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/defender-os-ui/defender-os-ui/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = LoggerTest.SetLogLevelChangesThreshold
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from LoggerTest
+[ RUN      ] LoggerTest.SetLogLevelChangesThreshold
+[2026-04-04 21:27:26.550] [CRITICAL] [test] visible critical
+[       OK ] LoggerTest.SetLogLevelChangesThreshold (0 ms)
+[----------] 1 test from LoggerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"LoggerTest.SetLogLevelChangesThreshold" end time: Apr 04 21:27 UTC
+"LoggerTest.SetLogLevelChangesThreshold" time elapsed: 00:00:00
+----------------------------------------------------------
+
+6/29 Testing: LoggerTest.LogToFileCreatesFileWithContent
+6/29 Test: LoggerTest.LogToFileCreatesFileWithContent
+Command: "/home/runner/work/defender-os-ui/defender-os-ui/build/tests/test_logger" "--gtest_filter=LoggerTest.LogToFileCreatesFileWithContent" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/defender-os-ui/defender-os-ui/build/tests
+"LoggerTest.LogToFileCreatesFileWithContent" start time: Apr 04 21:27 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/defender-os-ui/defender-os-ui/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = LoggerTest.LogToFileCreatesFileWithContent
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from LoggerTest
+[ RUN      ] LoggerTest.LogToFileCreatesFileWithContent
+[2026-04-04 21:27:26.552] [INFO] [test] file log test
+[Logger] Failed to open log file: 
+[       OK ] LoggerTest.LogToFileCreatesFileWithContent (0 ms)
+[----------] 1 test from LoggerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"LoggerTest.LogToFileCreatesFileWithContent" end time: Apr 04 21:27 UTC
+"LoggerTest.LogToFileCreatesFileWithContent" time elapsed: 00:00:00
+----------------------------------------------------------
+
+7/29 Testing: LoggerTest.InvalidLogFilePathDoesNotCrash
+7/29 Test: LoggerTest.InvalidLogFilePathDoesNotCrash
+Command: "/home/runner/work/defender-os-ui/defender-os-ui/build/tests/test_logger" "--gtest_filter=LoggerTest.InvalidLogFilePathDoesNotCrash" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/defender-os-ui/defender-os-ui/build/tests
+"LoggerTest.InvalidLogFilePathDoesNotCrash" start time: Apr 04 21:27 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/defender-os-ui/defender-os-ui/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = LoggerTest.InvalidLogFilePathDoesNotCrash
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from LoggerTest
+[ RUN      ] LoggerTest.InvalidLogFilePathDoesNotCrash
+[Logger] Failed to open log file: /no/such/directory/log.txt
+[2026-04-04 21:27:26.554] [INFO] [test] after bad file
+[       OK ] LoggerTest.InvalidLogFilePathDoesNotCrash (0 ms)
+[----------] 1 test from LoggerTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"LoggerTest.InvalidLogFilePathDoesNotCrash" end time: Apr 04 21:27 UTC
+"LoggerTest.InvalidLogFilePathDoesNotCrash" time elapsed: 00:00:00
+----------------------------------------------------------
+
+8/29 Testing: EventLoopTest.ThrowsOnNullWindow
+8/29 Test: EventLoopTest.ThrowsOnNullWindow
+Command: "/home/runner/work/defender-os-ui/defender-os-ui/build/tests/test_event_loop" "--gtest_filter=EventLoopTest.ThrowsOnNullWindow" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/defender-os-ui/defender-os-ui/build/tests
+"EventLoopTest.ThrowsOnNullWindow" start time: Apr 04 21:27 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/defender-os-ui/defender-os-ui/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = EventLoopTest.ThrowsOnNullWindow
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from EventLoopTest
+[ RUN      ] EventLoopTest.ThrowsOnNullWindow
+[2026-04-04 21:27:26.556] [ERROR] [/home/runner/work/defender-os-ui/defender-os-ui/src/core/EventLoop.cpp] EventLoop: null window provided
+[       OK ] EventLoopTest.ThrowsOnNullWindow (0 ms)
+[----------] 1 test from EventLoopTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"EventLoopTest.ThrowsOnNullWindow" end time: Apr 04 21:27 UTC
+"EventLoopTest.ThrowsOnNullWindow" time elapsed: 00:00:00
+----------------------------------------------------------
+
+9/29 Testing: EventLoopTest.ThrowsOnNullRenderer
+9/29 Test: EventLoopTest.ThrowsOnNullRenderer
+Command: "/home/runner/work/defender-os-ui/defender-os-ui/build/tests/test_event_loop" "--gtest_filter=EventLoopTest.ThrowsOnNullRenderer" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/defender-os-ui/defender-os-ui/build/tests
+"EventLoopTest.ThrowsOnNullRenderer" start time: Apr 04 21:27 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/defender-os-ui/defender-os-ui/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = EventLoopTest.ThrowsOnNullRenderer
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from EventLoopTest
+[ RUN      ] EventLoopTest.ThrowsOnNullRenderer
+[2026-04-04 21:27:26.558] [ERROR] [/home/runner/work/defender-os-ui/defender-os-ui/src/core/EventLoop.cpp] EventLoop: null renderer provided
+[       OK ] EventLoopTest.ThrowsOnNullRenderer (0 ms)
+[----------] 1 test from EventLoopTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"EventLoopTest.ThrowsOnNullRenderer" end time: Apr 04 21:27 UTC
+"EventLoopTest.ThrowsOnNullRenderer" time elapsed: 00:00:00
+----------------------------------------------------------
+
+10/29 Testing: EventLoopTest.ConstructsSuccessfullyWithValidArguments
+10/29 Test: EventLoopTest.ConstructsSuccessfullyWithValidArguments
+Command: "/home/runner/work/defender-os-ui/defender-os-ui/build/tests/test_event_loop" "--gtest_filter=EventLoopTest.ConstructsSuccessfullyWithValidArguments" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/defender-os-ui/defender-os-ui/build/tests
+"EventLoopTest.ConstructsSuccessfullyWithValidArguments" start time: Apr 04 21:27 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/defender-os-ui/defender-os-ui/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = EventLoopTest.ConstructsSuccessfullyWithValidArguments
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from EventLoopTest
+[ RUN      ] EventLoopTest.ConstructsSuccessfullyWithValidArguments
+[       OK ] EventLoopTest.ConstructsSuccessfullyWithValidArguments (0 ms)
+[----------] 1 test from EventLoopTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"EventLoopTest.ConstructsSuccessfullyWithValidArguments" end time: Apr 04 21:27 UTC
+"EventLoopTest.ConstructsSuccessfullyWithValidArguments" time elapsed: 00:00:00
+----------------------------------------------------------
+
+11/29 Testing: EventLoopTest.IsNotRunningBeforeStart
+11/29 Test: EventLoopTest.IsNotRunningBeforeStart
+Command: "/home/runner/work/defender-os-ui/defender-os-ui/build/tests/test_event_loop" "--gtest_filter=EventLoopTest.IsNotRunningBeforeStart" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/defender-os-ui/defender-os-ui/build/tests
+"EventLoopTest.IsNotRunningBeforeStart" start time: Apr 04 21:27 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/defender-os-ui/defender-os-ui/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = EventLoopTest.IsNotRunningBeforeStart
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from EventLoopTest
+[ RUN      ] EventLoopTest.IsNotRunningBeforeStart
+[       OK ] EventLoopTest.IsNotRunningBeforeStart (0 ms)
+[----------] 1 test from EventLoopTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"EventLoopTest.IsNotRunningBeforeStart" end time: Apr 04 21:27 UTC
+"EventLoopTest.IsNotRunningBeforeStart" time elapsed: 00:00:00
+----------------------------------------------------------
+
+12/29 Testing: EventLoopTest.ExitsImmediatelyWhenWindowShouldClose
+12/29 Test: EventLoopTest.ExitsImmediatelyWhenWindowShouldClose
+Command: "/home/runner/work/defender-os-ui/defender-os-ui/build/tests/test_event_loop" "--gtest_filter=EventLoopTest.ExitsImmediatelyWhenWindowShouldClose" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/defender-os-ui/defender-os-ui/build/tests
+"EventLoopTest.ExitsImmediatelyWhenWindowShouldClose" start time: Apr 04 21:27 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/defender-os-ui/defender-os-ui/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = EventLoopTest.ExitsImmediatelyWhenWindowShouldClose
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from EventLoopTest
+[ RUN      ] EventLoopTest.ExitsImmediatelyWhenWindowShouldClose
+[2026-04-04 21:27:26.564] [INFO] [/home/runner/work/defender-os-ui/defender-os-ui/src/core/EventLoop.cpp] EventLoop started
+[2026-04-04 21:27:26.564] [INFO] [/home/runner/work/defender-os-ui/defender-os-ui/src/core/EventLoop.cpp] EventLoop stopped
+[       OK ] EventLoopTest.ExitsImmediatelyWhenWindowShouldClose (0 ms)
+[----------] 1 test from EventLoopTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"EventLoopTest.ExitsImmediatelyWhenWindowShouldClose" end time: Apr 04 21:27 UTC
+"EventLoopTest.ExitsImmediatelyWhenWindowShouldClose" time elapsed: 00:00:00
+----------------------------------------------------------
+
+13/29 Testing: EventLoopTest.CallsUpdateCallbackEachFrame
+13/29 Test: EventLoopTest.CallsUpdateCallbackEachFrame
+Command: "/home/runner/work/defender-os-ui/defender-os-ui/build/tests/test_event_loop" "--gtest_filter=EventLoopTest.CallsUpdateCallbackEachFrame" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/defender-os-ui/defender-os-ui/build/tests
+"EventLoopTest.CallsUpdateCallbackEachFrame" start time: Apr 04 21:27 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/defender-os-ui/defender-os-ui/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = EventLoopTest.CallsUpdateCallbackEachFrame
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from EventLoopTest
+[ RUN      ] EventLoopTest.CallsUpdateCallbackEachFrame
+[2026-04-04 21:27:26.566] [INFO] [/home/runner/work/defender-os-ui/defender-os-ui/src/core/EventLoop.cpp] EventLoop started
+[2026-04-04 21:27:26.566] [INFO] [/home/runner/work/defender-os-ui/defender-os-ui/src/core/EventLoop.cpp] EventLoop stopped
+[       OK ] EventLoopTest.CallsUpdateCallbackEachFrame (0 ms)
+[----------] 1 test from EventLoopTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"EventLoopTest.CallsUpdateCallbackEachFrame" end time: Apr 04 21:27 UTC
+"EventLoopTest.CallsUpdateCallbackEachFrame" time elapsed: 00:00:00
+----------------------------------------------------------
+
+14/29 Testing: EventLoopTest.CallsRenderCallbackEachFrame
+14/29 Test: EventLoopTest.CallsRenderCallbackEachFrame
+Command: "/home/runner/work/defender-os-ui/defender-os-ui/build/tests/test_event_loop" "--gtest_filter=EventLoopTest.CallsRenderCallbackEachFrame" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/defender-os-ui/defender-os-ui/build/tests
+"EventLoopTest.CallsRenderCallbackEachFrame" start time: Apr 04 21:27 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/defender-os-ui/defender-os-ui/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = EventLoopTest.CallsRenderCallbackEachFrame
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from EventLoopTest
+[ RUN      ] EventLoopTest.CallsRenderCallbackEachFrame
+[2026-04-04 21:27:26.568] [INFO] [/home/runner/work/defender-os-ui/defender-os-ui/src/core/EventLoop.cpp] EventLoop started
+[2026-04-04 21:27:26.568] [INFO] [/home/runner/work/defender-os-ui/defender-os-ui/src/core/EventLoop.cpp] EventLoop stopped
+[       OK ] EventLoopTest.CallsRenderCallbackEachFrame (0 ms)
+[----------] 1 test from EventLoopTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"EventLoopTest.CallsRenderCallbackEachFrame" end time: Apr 04 21:27 UTC
+"EventLoopTest.CallsRenderCallbackEachFrame" time elapsed: 00:00:00
+----------------------------------------------------------
+
+15/29 Testing: EventLoopTest.PollsEventsEachFrame
+15/29 Test: EventLoopTest.PollsEventsEachFrame
+Command: "/home/runner/work/defender-os-ui/defender-os-ui/build/tests/test_event_loop" "--gtest_filter=EventLoopTest.PollsEventsEachFrame" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/defender-os-ui/defender-os-ui/build/tests
+"EventLoopTest.PollsEventsEachFrame" start time: Apr 04 21:27 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/defender-os-ui/defender-os-ui/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = EventLoopTest.PollsEventsEachFrame
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from EventLoopTest
+[ RUN      ] EventLoopTest.PollsEventsEachFrame
+[2026-04-04 21:27:26.570] [INFO] [/home/runner/work/defender-os-ui/defender-os-ui/src/core/EventLoop.cpp] EventLoop started
+[2026-04-04 21:27:26.570] [INFO] [/home/runner/work/defender-os-ui/defender-os-ui/src/core/EventLoop.cpp] EventLoop stopped
+[       OK ] EventLoopTest.PollsEventsEachFrame (0 ms)
+[----------] 1 test from EventLoopTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"EventLoopTest.PollsEventsEachFrame" end time: Apr 04 21:27 UTC
+"EventLoopTest.PollsEventsEachFrame" time elapsed: 00:00:00
+----------------------------------------------------------
+
+16/29 Testing: EventLoopTest.SwapsBuffersEachFrame
+16/29 Test: EventLoopTest.SwapsBuffersEachFrame
+Command: "/home/runner/work/defender-os-ui/defender-os-ui/build/tests/test_event_loop" "--gtest_filter=EventLoopTest.SwapsBuffersEachFrame" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/defender-os-ui/defender-os-ui/build/tests
+"EventLoopTest.SwapsBuffersEachFrame" start time: Apr 04 21:27 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/defender-os-ui/defender-os-ui/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = EventLoopTest.SwapsBuffersEachFrame
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from EventLoopTest
+[ RUN      ] EventLoopTest.SwapsBuffersEachFrame
+[2026-04-04 21:27:26.572] [INFO] [/home/runner/work/defender-os-ui/defender-os-ui/src/core/EventLoop.cpp] EventLoop started
+[2026-04-04 21:27:26.572] [INFO] [/home/runner/work/defender-os-ui/defender-os-ui/src/core/EventLoop.cpp] EventLoop stopped
+[       OK ] EventLoopTest.SwapsBuffersEachFrame (0 ms)
+[----------] 1 test from EventLoopTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"EventLoopTest.SwapsBuffersEachFrame" end time: Apr 04 21:27 UTC
+"EventLoopTest.SwapsBuffersEachFrame" time elapsed: 00:00:00
+----------------------------------------------------------
+
+17/29 Testing: EventLoopTest.CallsBeginAndEndFrameEachFrame
+17/29 Test: EventLoopTest.CallsBeginAndEndFrameEachFrame
+Command: "/home/runner/work/defender-os-ui/defender-os-ui/build/tests/test_event_loop" "--gtest_filter=EventLoopTest.CallsBeginAndEndFrameEachFrame" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/defender-os-ui/defender-os-ui/build/tests
+"EventLoopTest.CallsBeginAndEndFrameEachFrame" start time: Apr 04 21:27 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/defender-os-ui/defender-os-ui/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = EventLoopTest.CallsBeginAndEndFrameEachFrame
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from EventLoopTest
+[ RUN      ] EventLoopTest.CallsBeginAndEndFrameEachFrame
+[2026-04-04 21:27:26.574] [INFO] [/home/runner/work/defender-os-ui/defender-os-ui/src/core/EventLoop.cpp] EventLoop started
+[2026-04-04 21:27:26.574] [INFO] [/home/runner/work/defender-os-ui/defender-os-ui/src/core/EventLoop.cpp] EventLoop stopped
+[       OK ] EventLoopTest.CallsBeginAndEndFrameEachFrame (0 ms)
+[----------] 1 test from EventLoopTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"EventLoopTest.CallsBeginAndEndFrameEachFrame" end time: Apr 04 21:27 UTC
+"EventLoopTest.CallsBeginAndEndFrameEachFrame" time elapsed: 00:00:00
+----------------------------------------------------------
+
+18/29 Testing: EventLoopTest.StopExitsTheLoop
+18/29 Test: EventLoopTest.StopExitsTheLoop
+Command: "/home/runner/work/defender-os-ui/defender-os-ui/build/tests/test_event_loop" "--gtest_filter=EventLoopTest.StopExitsTheLoop" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/defender-os-ui/defender-os-ui/build/tests
+"EventLoopTest.StopExitsTheLoop" start time: Apr 04 21:27 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/defender-os-ui/defender-os-ui/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = EventLoopTest.StopExitsTheLoop
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from EventLoopTest
+[ RUN      ] EventLoopTest.StopExitsTheLoop
+[2026-04-04 21:27:26.576] [INFO] [/home/runner/work/defender-os-ui/defender-os-ui/src/core/EventLoop.cpp] EventLoop started
+[2026-04-04 21:27:26.576] [INFO] [/home/runner/work/defender-os-ui/defender-os-ui/src/core/EventLoop.cpp] EventLoop stop requested
+[2026-04-04 21:27:26.576] [INFO] [/home/runner/work/defender-os-ui/defender-os-ui/src/core/EventLoop.cpp] EventLoop stopped
+[       OK ] EventLoopTest.StopExitsTheLoop (0 ms)
+[----------] 1 test from EventLoopTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"EventLoopTest.StopExitsTheLoop" end time: Apr 04 21:27 UTC
+"EventLoopTest.StopExitsTheLoop" time elapsed: 00:00:00
+----------------------------------------------------------
+
+19/29 Testing: EventLoopTest.RunIsIdempotentWhenCalledTwice
+19/29 Test: EventLoopTest.RunIsIdempotentWhenCalledTwice
+Command: "/home/runner/work/defender-os-ui/defender-os-ui/build/tests/test_event_loop" "--gtest_filter=EventLoopTest.RunIsIdempotentWhenCalledTwice" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/defender-os-ui/defender-os-ui/build/tests
+"EventLoopTest.RunIsIdempotentWhenCalledTwice" start time: Apr 04 21:27 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/defender-os-ui/defender-os-ui/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = EventLoopTest.RunIsIdempotentWhenCalledTwice
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from EventLoopTest
+[ RUN      ] EventLoopTest.RunIsIdempotentWhenCalledTwice
+[2026-04-04 21:27:26.578] [INFO] [/home/runner/work/defender-os-ui/defender-os-ui/src/core/EventLoop.cpp] EventLoop started
+[2026-04-04 21:27:26.578] [INFO] [/home/runner/work/defender-os-ui/defender-os-ui/src/core/EventLoop.cpp] EventLoop stopped
+[2026-04-04 21:27:26.578] [INFO] [/home/runner/work/defender-os-ui/defender-os-ui/src/core/EventLoop.cpp] EventLoop started
+[2026-04-04 21:27:26.578] [INFO] [/home/runner/work/defender-os-ui/defender-os-ui/src/core/EventLoop.cpp] EventLoop stopped
+[       OK ] EventLoopTest.RunIsIdempotentWhenCalledTwice (0 ms)
+[----------] 1 test from EventLoopTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"EventLoopTest.RunIsIdempotentWhenCalledTwice" end time: Apr 04 21:27 UTC
+"EventLoopTest.RunIsIdempotentWhenCalledTwice" time elapsed: 00:00:00
+----------------------------------------------------------
+
+20/29 Testing: ApplicationTest.ThrowsOnNullWindow
+20/29 Test: ApplicationTest.ThrowsOnNullWindow
+Command: "/home/runner/work/defender-os-ui/defender-os-ui/build/tests/test_application" "--gtest_filter=ApplicationTest.ThrowsOnNullWindow" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/defender-os-ui/defender-os-ui/build/tests
+"ApplicationTest.ThrowsOnNullWindow" start time: Apr 04 21:27 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/defender-os-ui/defender-os-ui/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = ApplicationTest.ThrowsOnNullWindow
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from ApplicationTest
+[ RUN      ] ApplicationTest.ThrowsOnNullWindow
+[       OK ] ApplicationTest.ThrowsOnNullWindow (0 ms)
+[----------] 1 test from ApplicationTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"ApplicationTest.ThrowsOnNullWindow" end time: Apr 04 21:27 UTC
+"ApplicationTest.ThrowsOnNullWindow" time elapsed: 00:00:00
+----------------------------------------------------------
+
+21/29 Testing: ApplicationTest.ThrowsOnNullRenderer
+21/29 Test: ApplicationTest.ThrowsOnNullRenderer
+Command: "/home/runner/work/defender-os-ui/defender-os-ui/build/tests/test_application" "--gtest_filter=ApplicationTest.ThrowsOnNullRenderer" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/defender-os-ui/defender-os-ui/build/tests
+"ApplicationTest.ThrowsOnNullRenderer" start time: Apr 04 21:27 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/defender-os-ui/defender-os-ui/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = ApplicationTest.ThrowsOnNullRenderer
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from ApplicationTest
+[ RUN      ] ApplicationTest.ThrowsOnNullRenderer
+[       OK ] ApplicationTest.ThrowsOnNullRenderer (0 ms)
+[----------] 1 test from ApplicationTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"ApplicationTest.ThrowsOnNullRenderer" end time: Apr 04 21:27 UTC
+"ApplicationTest.ThrowsOnNullRenderer" time elapsed: 00:00:00
+----------------------------------------------------------
+
+22/29 Testing: ApplicationTest.InitializesSuccessfully
+22/29 Test: ApplicationTest.InitializesSuccessfully
+Command: "/home/runner/work/defender-os-ui/defender-os-ui/build/tests/test_application" "--gtest_filter=ApplicationTest.InitializesSuccessfully" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/defender-os-ui/defender-os-ui/build/tests
+"ApplicationTest.InitializesSuccessfully" start time: Apr 04 21:27 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/defender-os-ui/defender-os-ui/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = ApplicationTest.InitializesSuccessfully
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from ApplicationTest
+[ RUN      ] ApplicationTest.InitializesSuccessfully
+[2026-04-04 21:27:26.584] [INFO] [/home/runner/work/defender-os-ui/defender-os-ui/src/core/Application.cpp] Initialising DefenderOS UI
+[2026-04-04 21:27:26.584] [INFO] [/home/runner/work/defender-os-ui/defender-os-ui/src/core/Application.cpp] Application initialised successfully
+[2026-04-04 21:27:26.584] [INFO] [/home/runner/work/defender-os-ui/defender-os-ui/src/core/Application.cpp] Shutting down application
+[2026-04-04 21:27:26.584] [INFO] [/home/runner/work/defender-os-ui/defender-os-ui/src/core/Application.cpp] Application shut down
+[       OK ] ApplicationTest.InitializesSuccessfully (0 ms)
+[----------] 1 test from ApplicationTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"ApplicationTest.InitializesSuccessfully" end time: Apr 04 21:27 UTC
+"ApplicationTest.InitializesSuccessfully" time elapsed: 00:00:00
+----------------------------------------------------------
+
+23/29 Testing: ApplicationTest.InitializeReturnsFalseWhenWindowFails
+23/29 Test: ApplicationTest.InitializeReturnsFalseWhenWindowFails
+Command: "/home/runner/work/defender-os-ui/defender-os-ui/build/tests/test_application" "--gtest_filter=ApplicationTest.InitializeReturnsFalseWhenWindowFails" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/defender-os-ui/defender-os-ui/build/tests
+"ApplicationTest.InitializeReturnsFalseWhenWindowFails" start time: Apr 04 21:27 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/defender-os-ui/defender-os-ui/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = ApplicationTest.InitializeReturnsFalseWhenWindowFails
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from ApplicationTest
+[ RUN      ] ApplicationTest.InitializeReturnsFalseWhenWindowFails
+[2026-04-04 21:27:26.586] [INFO] [/home/runner/work/defender-os-ui/defender-os-ui/src/core/Application.cpp] Initialising DefenderOS UI
+[2026-04-04 21:27:26.586] [ERROR] [/home/runner/work/defender-os-ui/defender-os-ui/src/core/Application.cpp] Window initialisation failed
+[       OK ] ApplicationTest.InitializeReturnsFalseWhenWindowFails (0 ms)
+[----------] 1 test from ApplicationTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"ApplicationTest.InitializeReturnsFalseWhenWindowFails" end time: Apr 04 21:27 UTC
+"ApplicationTest.InitializeReturnsFalseWhenWindowFails" time elapsed: 00:00:00
+----------------------------------------------------------
+
+24/29 Testing: ApplicationTest.InitializeReturnsFalseWhenRendererFails
+24/29 Test: ApplicationTest.InitializeReturnsFalseWhenRendererFails
+Command: "/home/runner/work/defender-os-ui/defender-os-ui/build/tests/test_application" "--gtest_filter=ApplicationTest.InitializeReturnsFalseWhenRendererFails" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/defender-os-ui/defender-os-ui/build/tests
+"ApplicationTest.InitializeReturnsFalseWhenRendererFails" start time: Apr 04 21:27 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/defender-os-ui/defender-os-ui/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = ApplicationTest.InitializeReturnsFalseWhenRendererFails
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from ApplicationTest
+[ RUN      ] ApplicationTest.InitializeReturnsFalseWhenRendererFails
+[2026-04-04 21:27:26.588] [INFO] [/home/runner/work/defender-os-ui/defender-os-ui/src/core/Application.cpp] Initialising DefenderOS UI
+[2026-04-04 21:27:26.588] [ERROR] [/home/runner/work/defender-os-ui/defender-os-ui/src/core/Application.cpp] Renderer initialisation failed
+[       OK ] ApplicationTest.InitializeReturnsFalseWhenRendererFails (0 ms)
+[----------] 1 test from ApplicationTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"ApplicationTest.InitializeReturnsFalseWhenRendererFails" end time: Apr 04 21:27 UTC
+"ApplicationTest.InitializeReturnsFalseWhenRendererFails" time elapsed: 00:00:00
+----------------------------------------------------------
+
+25/29 Testing: ApplicationTest.InitializeIsIdempotent
+25/29 Test: ApplicationTest.InitializeIsIdempotent
+Command: "/home/runner/work/defender-os-ui/defender-os-ui/build/tests/test_application" "--gtest_filter=ApplicationTest.InitializeIsIdempotent" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/defender-os-ui/defender-os-ui/build/tests
+"ApplicationTest.InitializeIsIdempotent" start time: Apr 04 21:27 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/defender-os-ui/defender-os-ui/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = ApplicationTest.InitializeIsIdempotent
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from ApplicationTest
+[ RUN      ] ApplicationTest.InitializeIsIdempotent
+[2026-04-04 21:27:26.590] [INFO] [/home/runner/work/defender-os-ui/defender-os-ui/src/core/Application.cpp] Initialising DefenderOS UI
+[2026-04-04 21:27:26.590] [INFO] [/home/runner/work/defender-os-ui/defender-os-ui/src/core/Application.cpp] Application initialised successfully
+[2026-04-04 21:27:26.590] [WARNING] [/home/runner/work/defender-os-ui/defender-os-ui/src/core/Application.cpp] Application::initialize() called more than once
+[2026-04-04 21:27:26.590] [INFO] [/home/runner/work/defender-os-ui/defender-os-ui/src/core/Application.cpp] Shutting down application
+[2026-04-04 21:27:26.590] [INFO] [/home/runner/work/defender-os-ui/defender-os-ui/src/core/Application.cpp] Application shut down
+[       OK ] ApplicationTest.InitializeIsIdempotent (0 ms)
+[----------] 1 test from ApplicationTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"ApplicationTest.InitializeIsIdempotent" end time: Apr 04 21:27 UTC
+"ApplicationTest.InitializeIsIdempotent" time elapsed: 00:00:00
+----------------------------------------------------------
+
+26/29 Testing: ApplicationTest.RunWithoutInitializeDoesNotCrash
+26/29 Test: ApplicationTest.RunWithoutInitializeDoesNotCrash
+Command: "/home/runner/work/defender-os-ui/defender-os-ui/build/tests/test_application" "--gtest_filter=ApplicationTest.RunWithoutInitializeDoesNotCrash" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/defender-os-ui/defender-os-ui/build/tests
+"ApplicationTest.RunWithoutInitializeDoesNotCrash" start time: Apr 04 21:27 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/defender-os-ui/defender-os-ui/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = ApplicationTest.RunWithoutInitializeDoesNotCrash
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from ApplicationTest
+[ RUN      ] ApplicationTest.RunWithoutInitializeDoesNotCrash
+[2026-04-04 21:27:26.592] [ERROR] [/home/runner/work/defender-os-ui/defender-os-ui/src/core/Application.cpp] Application::run() called before initialize()
+[       OK ] ApplicationTest.RunWithoutInitializeDoesNotCrash (0 ms)
+[----------] 1 test from ApplicationTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"ApplicationTest.RunWithoutInitializeDoesNotCrash" end time: Apr 04 21:27 UTC
+"ApplicationTest.RunWithoutInitializeDoesNotCrash" time elapsed: 00:00:00
+----------------------------------------------------------
+
+27/29 Testing: ApplicationTest.RunExitsWhenWindowCloses
+27/29 Test: ApplicationTest.RunExitsWhenWindowCloses
+Command: "/home/runner/work/defender-os-ui/defender-os-ui/build/tests/test_application" "--gtest_filter=ApplicationTest.RunExitsWhenWindowCloses" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/defender-os-ui/defender-os-ui/build/tests
+"ApplicationTest.RunExitsWhenWindowCloses" start time: Apr 04 21:27 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/defender-os-ui/defender-os-ui/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = ApplicationTest.RunExitsWhenWindowCloses
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from ApplicationTest
+[ RUN      ] ApplicationTest.RunExitsWhenWindowCloses
+[2026-04-04 21:27:26.594] [INFO] [/home/runner/work/defender-os-ui/defender-os-ui/src/core/Application.cpp] Initialising DefenderOS UI
+[2026-04-04 21:27:26.594] [INFO] [/home/runner/work/defender-os-ui/defender-os-ui/src/core/Application.cpp] Application initialised successfully
+[2026-04-04 21:27:26.594] [INFO] [/home/runner/work/defender-os-ui/defender-os-ui/src/core/Application.cpp] Entering event loop
+[2026-04-04 21:27:26.594] [INFO] [/home/runner/work/defender-os-ui/defender-os-ui/src/core/EventLoop.cpp] EventLoop started
+[2026-04-04 21:27:26.594] [INFO] [/home/runner/work/defender-os-ui/defender-os-ui/src/core/EventLoop.cpp] EventLoop stopped
+[2026-04-04 21:27:26.594] [INFO] [/home/runner/work/defender-os-ui/defender-os-ui/src/core/Application.cpp] Shutting down application
+[2026-04-04 21:27:26.594] [INFO] [/home/runner/work/defender-os-ui/defender-os-ui/src/core/Application.cpp] Application shut down
+[       OK ] ApplicationTest.RunExitsWhenWindowCloses (0 ms)
+[----------] 1 test from ApplicationTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"ApplicationTest.RunExitsWhenWindowCloses" end time: Apr 04 21:27 UTC
+"ApplicationTest.RunExitsWhenWindowCloses" time elapsed: 00:00:00
+----------------------------------------------------------
+
+28/29 Testing: ApplicationTest.ShutdownIsIdempotent
+28/29 Test: ApplicationTest.ShutdownIsIdempotent
+Command: "/home/runner/work/defender-os-ui/defender-os-ui/build/tests/test_application" "--gtest_filter=ApplicationTest.ShutdownIsIdempotent" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/defender-os-ui/defender-os-ui/build/tests
+"ApplicationTest.ShutdownIsIdempotent" start time: Apr 04 21:27 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/defender-os-ui/defender-os-ui/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = ApplicationTest.ShutdownIsIdempotent
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from ApplicationTest
+[ RUN      ] ApplicationTest.ShutdownIsIdempotent
+[2026-04-04 21:27:26.596] [INFO] [/home/runner/work/defender-os-ui/defender-os-ui/src/core/Application.cpp] Initialising DefenderOS UI
+[2026-04-04 21:27:26.596] [INFO] [/home/runner/work/defender-os-ui/defender-os-ui/src/core/Application.cpp] Application initialised successfully
+[2026-04-04 21:27:26.596] [INFO] [/home/runner/work/defender-os-ui/defender-os-ui/src/core/Application.cpp] Shutting down application
+[2026-04-04 21:27:26.596] [INFO] [/home/runner/work/defender-os-ui/defender-os-ui/src/core/Application.cpp] Application shut down
+[       OK ] ApplicationTest.ShutdownIsIdempotent (0 ms)
+[----------] 1 test from ApplicationTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"ApplicationTest.ShutdownIsIdempotent" end time: Apr 04 21:27 UTC
+"ApplicationTest.ShutdownIsIdempotent" time elapsed: 00:00:00
+----------------------------------------------------------
+
+29/29 Testing: ApplicationTest.RendererReceivesWindowDimensions
+29/29 Test: ApplicationTest.RendererReceivesWindowDimensions
+Command: "/home/runner/work/defender-os-ui/defender-os-ui/build/tests/test_application" "--gtest_filter=ApplicationTest.RendererReceivesWindowDimensions" "--gtest_also_run_disabled_tests"
+Directory: /home/runner/work/defender-os-ui/defender-os-ui/build/tests
+"ApplicationTest.RendererReceivesWindowDimensions" start time: Apr 04 21:27 UTC
+Output:
+----------------------------------------------------------
+Running main() from /home/runner/work/defender-os-ui/defender-os-ui/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = ApplicationTest.RendererReceivesWindowDimensions
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from ApplicationTest
+[ RUN      ] ApplicationTest.RendererReceivesWindowDimensions
+[2026-04-04 21:27:26.598] [INFO] [/home/runner/work/defender-os-ui/defender-os-ui/src/core/Application.cpp] Initialising DefenderOS UI
+[2026-04-04 21:27:26.598] [INFO] [/home/runner/work/defender-os-ui/defender-os-ui/src/core/Application.cpp] Application initialised successfully
+[2026-04-04 21:27:26.598] [INFO] [/home/runner/work/defender-os-ui/defender-os-ui/src/core/Application.cpp] Shutting down application
+[2026-04-04 21:27:26.598] [INFO] [/home/runner/work/defender-os-ui/defender-os-ui/src/core/Application.cpp] Application shut down
+[       OK ] ApplicationTest.RendererReceivesWindowDimensions (0 ms)
+[----------] 1 test from ApplicationTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"ApplicationTest.RendererReceivesWindowDimensions" end time: Apr 04 21:27 UTC
+"ApplicationTest.RendererReceivesWindowDimensions" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Apr 04 21:27 UTC

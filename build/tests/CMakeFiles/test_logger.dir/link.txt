@@ -1,0 +1,1 @@
+/usr/bin/c++ -g -Wl,--dependency-file=CMakeFiles/test_logger.dir/link.d CMakeFiles/test_logger.dir/test_logger.cpp.o -o test_logger  ../lib/libgtest_main.a ../libDefenderOsUICore.a ../lib/libgtest.a

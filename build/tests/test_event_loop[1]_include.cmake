@@ -1,0 +1,5 @@
+if(EXISTS "/home/runner/work/defender-os-ui/defender-os-ui/build/tests/test_event_loop[1]_tests.cmake")
+  include("/home/runner/work/defender-os-ui/defender-os-ui/build/tests/test_event_loop[1]_tests.cmake")
+else()
+  add_test(test_event_loop_NOT_BUILT test_event_loop_NOT_BUILT)
+endif()
