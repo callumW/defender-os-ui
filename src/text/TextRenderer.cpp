@@ -273,20 +273,23 @@ bool TextRenderer::initFreetype() {
 }
 
 bool TextRenderer::loadGlyphs() {
+    constexpr unsigned char ASCII_PRINTABLE_START = 32;
+    constexpr unsigned char ASCII_PRINTABLE_END   = 128;
+
     glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 
-    for (unsigned char c = 32; c < 128; ++c) {
+    for (unsigned char c = ASCII_PRINTABLE_START; c < ASCII_PRINTABLE_END; ++c) {
         if (FT_Load_Char(m_ftFace, c, FT_LOAD_RENDER) != 0) {
             LOG_WARNING("FreeType: could not load glyph for char " +
                         std::to_string(static_cast<int>(c)));
             continue;
         }
-        m_glyphs[static_cast<char>(c)] = uploadGlyph();
+        m_glyphs[static_cast<char>(c)] = uploadCurrentGlyph();
     }
     return !m_glyphs.empty();
 }
 
-GlyphInfo TextRenderer::uploadGlyph() {
+GlyphInfo TextRenderer::uploadCurrentGlyph() {
     const FT_GlyphSlot slot   = m_ftFace->glyph;
     const FT_Bitmap&   bitmap = slot->bitmap;
 

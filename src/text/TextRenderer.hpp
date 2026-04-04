@@ -56,7 +56,7 @@ private:
     [[nodiscard]] bool setupBuffers();
     [[nodiscard]] bool initFreetype();
     [[nodiscard]] bool loadGlyphs();
-    [[nodiscard]] GlyphInfo uploadGlyph();
+    [[nodiscard]] GlyphInfo uploadCurrentGlyph();
     void freeGlyphTextures();
     void updateProjection();
     void renderGlyph(const GlyphInfo& glyph, float x, float y, float scale);
