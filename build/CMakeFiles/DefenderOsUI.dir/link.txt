@@ -1,1 +1,0 @@
-/usr/bin/c++ -g -Wl,--dependency-file=CMakeFiles/DefenderOsUI.dir/link.d CMakeFiles/DefenderOsUI.dir/src/main.cpp.o -o DefenderOsUI  libDefenderOsUIPlatform.a libDefenderOsUICore.a _deps/glfw-build/src/libglfw3.a /usr/lib/x86_64-linux-gnu/librt.a -lm -ldl -lGLESv2 -lEGL

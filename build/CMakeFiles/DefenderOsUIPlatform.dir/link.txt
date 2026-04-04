@@ -1,2 +1,0 @@
-/usr/bin/ar qc libDefenderOsUIPlatform.a CMakeFiles/DefenderOsUIPlatform.dir/src/window/Window.cpp.o CMakeFiles/DefenderOsUIPlatform.dir/src/renderer/Renderer.cpp.o CMakeFiles/DefenderOsUIPlatform.dir/src/platform/ApplicationBuilder.cpp.o
-/usr/bin/ranlib libDefenderOsUIPlatform.a

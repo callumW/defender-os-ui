@@ -1,2 +1,0 @@
-/usr/bin/ar qc libDefenderOsUICore.a CMakeFiles/DefenderOsUICore.dir/src/logging/Logger.cpp.o CMakeFiles/DefenderOsUICore.dir/src/core/EventLoop.cpp.o CMakeFiles/DefenderOsUICore.dir/src/core/Application.cpp.o
-/usr/bin/ranlib libDefenderOsUICore.a

@@ -1,5 +1,0 @@
-if(EXISTS "/home/runner/work/defender-os-ui/defender-os-ui/build/tests/test_logger[1]_tests.cmake")
-  include("/home/runner/work/defender-os-ui/defender-os-ui/build/tests/test_logger[1]_tests.cmake")
-else()
-  add_test(test_logger_NOT_BUILT test_logger_NOT_BUILT)
-endif()
