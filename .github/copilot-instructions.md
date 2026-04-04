@@ -45,7 +45,7 @@
 | Member variable | `m_camelCase` | `m_window` |
 | Free function / method | `camelCase` | `initialize()` |
 | Constant | `SCREAMING_SNAKE` | `MAX_FRAMES` |
-| Enum value | `PascalCase` | `LogLevel::Debug` |
+| Enum value | `SCREAMING_SNAKE` in `enum class` | `LogLevel::DEBUG` |
 | File | `PascalCase.hpp/.cpp` | `Window.hpp` |
 
 ---
