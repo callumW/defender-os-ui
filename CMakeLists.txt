@@ -44,6 +44,9 @@ find_package(PkgConfig REQUIRED)
 pkg_check_modules(GLESv2 REQUIRED glesv2)
 pkg_check_modules(EGL    REQUIRED egl)
 
+# FreeType — for glyph rasterisation (text rendering)
+find_package(Freetype REQUIRED)
+
 # ---------------------------------------------------------------------------
 # DefenderOsUICore — Logger, EventLoop, Application (no GPU dependencies)
 # ---------------------------------------------------------------------------
@@ -63,6 +66,7 @@ target_compile_features(DefenderOsUICore PUBLIC cxx_std_17)
 add_library(DefenderOsUIPlatform STATIC
     src/window/Window.cpp
     src/renderer/Renderer.cpp
+    src/text/TextRenderer.cpp
     src/platform/ApplicationBuilder.cpp
 )
 target_include_directories(DefenderOsUIPlatform PUBLIC
@@ -75,6 +79,7 @@ target_link_libraries(DefenderOsUIPlatform PUBLIC
     glfw
     ${GLESv2_LIBRARIES}
     ${EGL_LIBRARIES}
+    Freetype::Freetype
 )
 target_compile_options(DefenderOsUIPlatform PRIVATE
     ${GLESv2_CFLAGS_OTHER}

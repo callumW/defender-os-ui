@@ -14,6 +14,7 @@ Opens a full-screen OpenGL ES window and drives a unified event & render loop.
 sudo apt install \
   build-essential cmake pkg-config git \
   libgles2-mesa-dev libegl-dev \
+  libfreetype-dev \
   libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev libxext-dev
 ```
 
@@ -48,9 +49,10 @@ src/
   core/       — Application, EventLoop
   window/     — IWindow interface + GLFW Window implementation
   renderer/   — IRenderer interface + OpenGL ES Renderer implementation
+  text/       — ITextRenderer interface + FreeType + OpenGL ES TextRenderer
   platform/   — ApplicationBuilder (production factory)
 tests/
-  mocks/      — MockWindow, MockRenderer (no GPU required)
+  mocks/      — MockWindow, MockRenderer, MockTextRenderer (no GPU required)
   test_*.cpp  — CTest / GoogleTest unit tests
 ```
 

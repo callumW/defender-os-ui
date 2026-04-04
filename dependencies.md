@@ -32,6 +32,17 @@ This document lists all external dependencies required by `defender-os-ui`, incl
   sudo apt install libegl-dev
   ```
 
+### FreeType 2
+- **Purpose**: Font rasterisation library. Loads TrueType/OpenType font files and renders glyphs into bitmaps that are uploaded as OpenGL ES textures for on-screen text.
+- **License**: FreeType License (BSD-style) or GPLv2 (user's choice)
+- **Source**: System package — `libfreetype-dev` or equivalent
+- **Install (Debian/Ubuntu)**:
+  ```sh
+  sudo apt install libfreetype-dev
+  ```
+- **Detected via**: CMake `find_package(Freetype REQUIRED)` which locates the `Freetype::Freetype` imported target.
+- **Notes**: Only linked into `DefenderOsUIPlatform`. The `DefenderOsUICore` library and unit tests have no FreeType dependency.
+
 ---
 
 ## Test-Only Dependencies
@@ -63,6 +74,7 @@ sudo apt install \
   git \
   libgles2-mesa-dev \
   libegl-dev \
+  libfreetype-dev \
   libxrandr-dev \
   libxinerama-dev \
   libxcursor-dev \
